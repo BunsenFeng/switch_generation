@@ -163,7 +163,8 @@ def switch_generation(prompts, batch_size=8, total_max_length=1024, max_length_p
             # if force_select_model_id is specified, use it for all prompts
             which_model = [force_select_model_id] * len(prompts)
         if not random_selection and (round_id == 0 or round_id == total_max_length // max_length_per_segment - 1) and len(model_list) == 3:
-            which_model = [2] * len(prompts)  # first and last round always use the aligned model
+            # which_model = [2] * len(prompts)  # first and last round always use the aligned model
+            which_model = [len(model_list) - 1] * len(prompts)  # first and last round always use the aligned model (the last model)
         else:
             if random_selection:
                 # randomly select a model for each prompt
@@ -179,16 +180,22 @@ def switch_generation(prompts, batch_size=8, total_max_length=1024, max_length_p
                 #     print(f"Selector output: {selector_outputs[i]}")
                 
                 for i in range(len(prompts)):
-                    if "0" in selector_outputs[i]:
-                        which_model.append(0)
-                    elif "1" in selector_outputs[i]:
-                        which_model.append(1)
-                    elif "2" in selector_outputs[i]:
-                        which_model.append(2)
-                    else:
-                        # if the selector model does not return a valid model index, default to the aligned model
+                    # if "0" in selector_outputs[i]:
+                    #     which_model.append(0)
+                    # elif "1" in selector_outputs[i]:
+                    #     which_model.append(1)
+                    # elif "2" in selector_outputs[i]:
+                    #     which_model.append(2)
+                    found_flag = False
+                    for j in range(len(model_list)):
+                        if str(j) in selector_outputs[i]:
+                            which_model.append(j)
+                            found_flag = True
+                            break
+                    if not found_flag:
+                        # if the selector model does not return a valid model index, default to the aligned model (the last model?)
                         # print("NOT FOUND!")
-                        which_model.append(2)
+                        which_model.append(len(model_list) - 1)
 
                 for k in range(len(which_model)):
                     # in case of errors, randomly select a model
