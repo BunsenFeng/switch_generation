@@ -1,6 +1,6 @@
 # switch_generation
 
-Repository for [Don't Throw Away Your Pretrained Model](./).
+Repository for [Don't Throw Away Your Pretrained Model](https://arxiv.org/abs/2510.09913).
 
 ## Quick Start
 
