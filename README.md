@@ -54,5 +54,10 @@ What's pending: code for switcher training, code for evals in the paper, compati
 If Switch Generation is helpful to you:
 
 ```
-TBD
+@article{feng2025don,
+  title={Don't Throw Away Your Pretrained Model},
+  author={Feng, Shangbin and Yu, Wenhao and Wang, Yike and Zhang, Hongming and Tsvetkov, Yulia and Yu, Dong},
+  journal={arXiv preprint arXiv:2510.09913},
+  year={2025}
+}
 ```
