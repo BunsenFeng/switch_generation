@@ -1,6 +1,8 @@
 # switch_generation
 
-Repository for [Don't Throw Away Your Pretrained Model](https://arxiv.org/abs/2510.09913).
+Repository for [Don't Throw Away Your Pretrained Model](https://arxiv.org/abs/2510.09913), ICLR 2026.
+
+🌟 **A better and complete implementation of Switch Generation, as well as many other multi-LLM collaboration approaches, is now available in [MoCo](https://github.com/BunsenFeng/model_collaboration)!**
 
 ## Quick Start
 
